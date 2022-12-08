@@ -24,6 +24,13 @@ export class TabelaFuncionariosComponent implements OnInit {
     )
   }
 
+  verificar(){
+    const higherAge = this.lista.reduce(function(prev, current) {
+      return (prev.age > current.age) ? prev : current
+  })
+    alert("O funcionário mais velho é: " + higherAge.nome + " " + higherAge.sobrenome + " com " + higherAge.age + " anos!")
+  }
+
   delete(id: number){
     this.servico.deletar(id)
   }
