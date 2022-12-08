@@ -1,0 +1,39 @@
+<h3>{{titulo}}</h3>
+<div class="filtro">
+    <input type="text" [(ngModel)]="nomePesquisado" class="form-control" placeholder="Filtrar por nome" >
+</div>
+
+<br /><br />
+
+<a type="button" href="/novo" class="btn btn-success">Novo cadastro</a>
+<a type="button" href="/novo" class="btn btn-success">Novo cadastro</a>
+<br />
+<br />
+
+<div class="col">
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Sobrenome</th>
+                <th scope="col">Idade</th>
+                <th scope="col">Edição</th>
+                <th scope="col">Exclusão</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let funcionario of lista | filtroPesquisa:nomePesquisado">
+                <td>{{funcionario.id}}</td>
+                <td>{{funcionario.nome}}</td>
+                <td>{{funcionario.sobrenome}}</td>
+                <td>{{funcionario.age}}</td>
+                <td><a routerLink="/edit/{{funcionario.id}}" class="btn btn-warning">Editar</a></td>
+                <td><a type="button" (click)="delete(funcionario.id)" class="btn btn-danger">Excluir</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p *ngIf="lista.length <= 0"> NÃO HÁ FUNCIONARIOS CADASTRADOS! </p>
